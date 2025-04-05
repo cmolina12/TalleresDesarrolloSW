@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Listado de Series</h1>
+
+    <div class="row">
+      <!-- Columna izquierda: tabla -->
+      <div class="col-md-8">
+        <table class="table table-striped" id="tablaSeries">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Canal</th>
+              <th>Temporadas</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="promedioTemporadas" class="font-weight-bold mt-3"></div>
+      </div>
+
+      <!-- Columna derecha: tarjeta de detalle -->
+      <div class="col-md-4">
+        <div id="detalleSerie"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
