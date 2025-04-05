@@ -1,15 +1,28 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Series</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Hola Mundo</h1>
-  <script src="main.js"></script>
+  <div class="container mt-4">
+    <h1>Listado de Series</h1>
+    <table class="table table-striped" id="tablaSeries">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Canal</th>
+          <th>Temporadas</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="promedioTemporadas" class="mt-3 font-weight-bold"></div>
+  </div>
+
+  <script type="module" src="./scripts/main.js"></script>
 </body>
 </html>
