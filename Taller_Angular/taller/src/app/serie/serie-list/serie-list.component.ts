@@ -4,6 +4,7 @@ import { Serie } from '../serie';
 
 @Component({
   selector: 'app-serie-list',
+  standalone: false,
   templateUrl: './serie-list.component.html',
   styleUrls: ['./serie-list.component.css']
 })
