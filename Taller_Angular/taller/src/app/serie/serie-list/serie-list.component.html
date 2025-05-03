@@ -1,80 +1,92 @@
 <style>
-  .header {
-    background-color: #4ca9bb;
-    padding: 0.75rem 1rem;
+  .app-header {
+    background-color: rgb(29, 167, 178);
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+    border-bottom: 4px solid #0e6b75;
   }
 
-  .header img {
-    height: 32px;
+  .app-header img {
+    height: 40px;
   }
 
-  .header h2 {
+  .app-header h1 {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.8rem;
     margin: 0;
-    color: white;
-    font-weight: bold;
   }
 
-  .series-table {
+  .table th {
+    background-color: #f1f1f1;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: #e9f7fa;
+    cursor: pointer;
+  }
+
+  .series-detail-card {
     margin-top: 1.5rem;
   }
 
-  .series-card img {
-    width: 100%;
+  .series-detail-card img {
+    height: 350px;
     object-fit: cover;
+    border-bottom: 1px solid #ccc;
   }
 
-  .series-card .card {
-    margin-top: 1rem;
+  .series-detail-card .btn {
+    background-color: rgb(29, 167, 178);
+    border: none;
+  }
+
+  .series-detail-card .btn:hover {
+    background-color: #228a99;
   }
 </style>
 
 <!-- Encabezado -->
-<div class="header">
+<div class="app-header mb-4">
   <img src="https://cdn-icons-png.flaticon.com/512/3004/3004142.png" alt="TV Logo">
-  <h2>TV Series</h2>
+  <h1>Serie-Lizador</h1>
 </div>
 
-<!-- Contenido principal -->
 <div class="row">
 
   <!-- Tabla de series -->
   <div class="col-md-7">
-    <table class="table series-table">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
-          <th>Channel</th>
-          <th>Seasons</th>
+          <th>Nombre</th>
+          <th>Canal</th>
+          <th>Temporadas</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let serie of series; let i = index">
+        <tr *ngFor="let serie of series; let i = index" (click)="selectSerie(serie)">
           <td><b>{{ i + 1 }}</b></td>
-          <td>
-            <a href="#" (click)="selectSerie(serie); $event.preventDefault()">
-              {{ serie.name }}
-            </a>
-          </td>
+          <td>{{ serie.name }}</td>
           <td>{{ serie.channel }}</td>
           <td>{{ serie.seasons }}</td>
         </tr>
       </tbody>
     </table>
+    <p><strong>Promedio de temporadas:</strong> {{ calcularPromedioTemporadas() }}</p>
   </div>
 
-  <!-- Card de serie seleccionada -->
+  <!-- Detalle de serie -->
   <div class="col-md-5" *ngIf="selectedSerie">
-    <div class="series-card">
-      <div class="card">
-        <img [src]="selectedSerie.poster" [alt]="selectedSerie.name" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ selectedSerie.name }}</h5>
-          <p class="card-text">{{ selectedSerie.description }}</p>
-        </div>
+    <div class="card series-detail-card shadow">
+      <img [src]="selectedSerie.poster" class="card-img-top" [alt]="selectedSerie.name">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedSerie.name }}</h5>
+        <p class="card-text">{{ selectedSerie.description }}</p>
+        <a [href]="selectedSerie.webpage" target="_blank" class="btn btn-primary w-100">Visitar sitio oficial</a>
       </div>
     </div>
   </div>
