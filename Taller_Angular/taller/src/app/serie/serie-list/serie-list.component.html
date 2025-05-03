@@ -1,0 +1,77 @@
+<!-- Título de la página -->
+<title>Serie-Lizador</title>
+
+<!-- Estilos personalizados -->
+<style>
+  .main-container {
+    background-color: rgb(29, 167, 178);
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  h1 {
+    color: #181b1f;
+    font-weight: bold;
+  }
+
+  .series-table th {
+    background-color: #f8f9fa;
+  }
+
+  .series-card img {
+    max-height: 400px;
+    object-fit: cover;
+  }
+</style>
+
+<!-- Contenido principal -->
+<div class="main-container">
+
+  <!-- Encabezado -->
+  <div class="d-flex align-items-center mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/3004/3004142.png" width="40" class="me-3" alt="icon">
+    <h1 class="mb-0">Taller Angular</h1>
+  </div>
+
+  <!-- Tabla de series -->
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-hover series-table">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Canal</th>
+            <th>Temporadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let serie of series; let i = index">
+            <td><b>{{ i + 1 }}</b></td>
+            <td>
+              <a href="#" (click)="selectSerie(serie); $event.preventDefault()">
+                {{ serie.name }}
+              </a>
+            </td>
+            <td>{{ serie.channel }}</td>
+            <td>{{ serie.seasons }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Promedio de temporadas:</strong> {{ calcularPromedioTemporadas() }}</p>
+    </div>
+
+    <!-- Tarjeta de serie seleccionada -->
+    <div class="col-md-5" *ngIf="selectedSerie">
+      <div class="card series-card shadow">
+        <img [src]="selectedSerie.poster" [alt]="selectedSerie.name" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedSerie.name }}</h5>
+          <p class="card-text">{{ selectedSerie.description }}</p>
+          <a [href]="selectedSerie.webpage" class="btn btn-dark" target="_blank">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SeriesModule } from './series/series.module';
+import { SerieModule } from './serie/serie.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,12 @@ import { SeriesModule } from './series/series.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SeriesModule
+    SerieModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
