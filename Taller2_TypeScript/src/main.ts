@@ -31,21 +31,6 @@ if (promedioElemento) {
   promedioElemento.textContent = `Promedio de temporadas: ${calcularPromedioTemporadas().toFixed(2)}`;
 }
 
-/*
- function mostrarDetalleSerie(serie: any): void {
-  detalleDiv.innerHTML = `
-    <div class="card">
-      <img src="${serie.image}" class="card-img-top" alt="${serie.name}">
-      <div class="card-body">
-        <h5 class="card-title">${serie.name}</h5>
-        <p class="card-text">${serie.description}</p>
-        <a href="${serie.link}" target="_blank" class="btn btn-primary">Ver más</a>
-      </div>
-    </div>
-  `;
- }
- */
-
 function mostrarDetalleSerie(serie: any): void {
   detalleDiv.innerHTML = `
     <div class="card">
